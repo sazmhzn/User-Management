@@ -36,3 +36,71 @@
     transform: rotate(360deg);
   }
 }
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 18px;
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #4C5F6B;
+}
+
+.parent {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex-grow: 1;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+/* --------- Non-flexbox related styles --------- */
+.child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5%;
+  padding: 20px;
+  font-size: 20px;
+  line-height: 20px;
+  color: #ffe8c3;
+  background-color: #BCA0BC;
+  border-radius: 10px;
+  border: 10px solid #F9B9F2;
+}
+
+.sidebar {
+  width: 20%;
+  display: flex;
+  align-items: start;
+
+}
+
+.content {
+  width: 100%;
+}
+
+ul {
+  width: 100%;
+  list-style-type: none;
+}
+
+li {
+  padding: 8px;
+  margin: 8px 0;
+  text-align: left;
+  color: #282c34;
+}

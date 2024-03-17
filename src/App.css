@@ -46,9 +46,8 @@
 
 body {
   font-size: 18px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 18px;
-  font-weight: 600;
   background-color: #f6fcff;
 }
 
@@ -75,7 +74,6 @@ body {
   /* margin: 0.5%; */
   padding: 20px;
   font-size: 20px;
-  line-height: 20px;
   color: #2c2c2c;
   /* background-color: #BCA0BC; */
   /* border-radius: 10px; */
@@ -93,6 +91,7 @@ body {
   width: 100%;
   background-color: #f6fcff;
   display: flex;
+  flex-direction: column;
   align-items: start;
   justify-content: start;
   padding: 30px;
@@ -120,3 +119,18 @@ a {
   text-decoration: none;
 }
 
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid burlywood;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

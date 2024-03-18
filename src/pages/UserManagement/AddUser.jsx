@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AddUser = () => {
+
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [age, setAge] = useState();
@@ -11,22 +15,16 @@ const AddUser = () => {
   };
 
   const handleEmail = (e) => {
-    
-      setEmail(e.target.value);
-  }
+    setEmail(e.target.value);
+  };
 
   const handleAge = (e) => {
-    return(
-      setAge(e.target.value)
-    )
-  }
+    return setAge(e.target.value);
+  };
 
   const handleCity = (e) => {
-    return(
-      setCity(e.target.value)
-    )
-  }
-
+    return setCity(e.target.value);
+  };
 
   const saveForm = () => {
     console.log("saveform");
@@ -34,30 +32,33 @@ const AddUser = () => {
     console.log("City: ", city);
     console.log("Email: ", email);
     console.log("Age: ", age);
+    navigate("/userManagement")
   };
 
   return (
     <>
       <h1>Add user</h1>
-      <div className="input-group">
-        <label>Username</label>
-        <input type="text" name="username" onChange={handleUserName} />
-      </div>
-      <div className="input-group">
-        <label>Email</label>
-        <input type="text" name="email" onChange={handleEmail} />
-      </div>
-      <div className="input-group">
-        <label>Age</label>
-        <input type="text" name="age" onChange={handleAge} />
-      </div>
-      <div className="input-group">
-        <label>City</label>
-        <input type="text" name="city"onChange={handleCity} />
-      </div>
-
-      <div>
-        <button onClick={saveForm}>Save</button>
+      <div className="form-container">
+        <div className="input-group">
+          <label>Username</label>
+          <input type="text" name="username" onChange={handleUserName} />
+        </div>
+        <div className="input-group">
+          <label>Email</label>
+          <input type="text" name="email" onChange={handleEmail} />
+        </div>
+        <div className="input-group">
+          <label>Age</label>
+          <input type="text" name="age" onChange={handleAge} />
+        </div>
+        <div className="input-group">
+          <label>City</label>
+          <input type="text" name="city" onChange={handleCity} />
+        </div>
+        <div>
+          
+          <button onClick={saveForm}>Save</button>
+        </div>
       </div>
     </>
   );

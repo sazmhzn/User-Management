@@ -7,10 +7,32 @@ const UserManagement = () => {
   const student = {
     name : 'John Doe',
     roll: 213,
+    phone: [12, 123,123],
   }
 
-  const {name, ...other} = student
-  console.log(name);
+  //object desctructuring
+  const {name ,roll, phone} = student
+  console.log(name , roll);
+
+  //Array desctructuring
+  const [n, q, e] = phone;
+  console.log(n, q, e);
+
+  //spread operator
+  const uzers = [
+    {
+      id: 1,
+      name: "james"
+    }
+  ]
+
+  const uzer = {
+    id: 2,
+    name: "Ras",
+  }
+
+  const newUser = [...uzers, uzer];
+  console.log(newUser);
 
   const [users, setUsers] = useState([]);
   useEffect(() => {

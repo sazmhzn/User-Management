@@ -32,7 +32,6 @@ const UserManagement = () => {
   }
 
   const newUser = [...uzers, uzer];
-  console.log(newUser);
 
   const [users, setUsers] = useState([]);
   useEffect(() => {
@@ -72,7 +71,7 @@ const UserManagement = () => {
 
       <div className="button-container">
         <button>
-          <Link to="/AddUser">Add user</Link>
+          <Link to="/userManagement/AddUser">Add user</Link>
         </button>
       </div>
 
@@ -93,6 +92,9 @@ const UserManagement = () => {
                   <td> {user.age} </td>
                   <td> {user.age} </td>
                   <td> {user.city} </td>
+                  <td> 
+                    <Link to={`/userManagement/UserDetails/${user.id}`}> <button>Detail</button> </Link>
+                  </td>
                   <td> 
                     <Link to={`/userManagement/edit/${user.id}`}> <button>Edit</button> </Link>
                   </td>

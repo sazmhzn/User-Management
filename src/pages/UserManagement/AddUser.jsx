@@ -16,29 +16,15 @@ const AddUser = () => {
     city: "",
   })
 
-  const handleUserName = (e) => {
+  const handleUserInput = (e) => {
     // setUsername(e.target.value);
-    setUser({...user, username: e.target.value})
+    setUser({...user, [e.target.name]: e.target.value})
   };
 
-  const handleEmail = (e) => {
-    // setEmail(e.target.value);
-    setUser({...user, email: e.target.value})
-  };
-
-  const handleAge = (e) => {
-    // return setAge(e.target.value);
-    setUser({...user, username: e.target.value})
-  };
-
-  const handleCity = (e) => {
-    // return setCity(e.target.value);
-    setUser({...user, city: e.target.value})
-  };
 
   const saveForm = () => {
     console.log("saveform");
-    console.log("User: ", user);
+    // console.log("User: ", user);
  
     navigate("/userManagement")
   };
@@ -49,19 +35,19 @@ const AddUser = () => {
       <div className="form-container">
         <div className="input-group">
           <label>Username</label>
-          <input type="text" name="username"  onChange={handleUserName}  />
+          <input type="text" name="username"  onChange={handleUserInput}  />
         </div>
         <div className="input-group">
           <label>Email</label>
-          <input type="text" name="email" value={user.email} onChange={handleEmail} />
+          <input type="text" name="email" value={user.email} onChange={handleUserInput} />
         </div>
         <div className="input-group">
           <label>Age</label>
-          <input type="text" name="age" value={user.age} onChange={handleAge} />
+          <input type="text" name="age" value={user.age} onChange={handleUserInput} />
         </div>
         <div className="input-group">
           <label>City</label>
-          <input type="text" name="city" value={user.city} onChange={handleCity} />
+          <input type="text" name="city" value={user.city} onChange={handleUserInput} />
         </div>
         <div>
           

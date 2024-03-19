@@ -74,10 +74,9 @@ body {
   /* margin: 0.5%; */
   padding: 20px;
   font-size: 20px;
-  color: #2c2c2c;
   /* background-color: #BCA0BC; */
   /* border-radius: 10px; */
-  border: 1px solid #F9B9F2;
+  border: 1px solid #c0b9f9;
 }
 
 .sidebar {
@@ -112,6 +111,7 @@ li {
 
 header {
   background-color: #282c34;
+  color: white;
 }
 
 a {
@@ -126,7 +126,7 @@ table {
 }
 
 td, th {
-  border: 1px solid burlywood;
+  border: 1px solid rgb(247, 241, 233);
   text-align: left;
   padding: 8px;
 }
@@ -166,6 +166,22 @@ input{
   padding: 8px 16px;
 }
 
+.button-container {
+  width: 100%;
+  text-align: right;
+}
+
 button {
   padding: 8px 16px;
+  margin: 8px 0;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-color: #0bafd8;
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
+}
+
+.delete {
+  background-color: rgb(241, 34, 34);
 }

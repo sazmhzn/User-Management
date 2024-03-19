@@ -12,11 +12,9 @@ const UserManagement = () => {
 
   //object desctructuring
   const {name ,roll, phone} = student
-  console.log(name , roll);
 
   //Array desctructuring
   const [n, q, e] = phone;
-  console.log(n, q, e);
 
   //spread operator
   const uzers = [
@@ -93,7 +91,7 @@ const UserManagement = () => {
                   <td> {user.age} </td>
                   <td> {user.city} </td>
                   <td> 
-                    <Link to={`/userManagement/UserDetails/${user.id}`}> <button>Detail</button> </Link>
+                    <Link to={`/userManagement/UserDetail/${user.id}`}> <button>Detail</button> </Link>
                   </td>
                   <td> 
                     <Link to={`/userManagement/edit/${user.id}`}> <button>Edit</button> </Link>

@@ -1,6 +1,6 @@
 
 
-const UserDetails = () => {
+const UserDetail = () => {
     return(
         <>
         <h1>User Details</h1>
@@ -8,4 +8,4 @@ const UserDetails = () => {
     );
 }
 
-export default UserDetails;
+export default UserDetail;

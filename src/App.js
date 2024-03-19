@@ -6,7 +6,7 @@ import "./App.css";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import AddUser from "./pages/UserManagement/AddUser";
-import UserDetails from "./pages/UserManagement/UserDetails";
+import UserDetail from "./pages/UserManagement/UserDetail";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
             <Route path="/FAQ" element={< FAQ />} />
             <Route path="/Contact" element={ <Contact/> } />
             <Route path="/userManagement/AddUser" element={ <AddUser/> } />
-            <Route path="/userManagement/UserDetails" element={ <UserDetails/> } />
+            <Route path="/userManagement/UserDetail" element={ <UserDetail/> } />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -27,7 +27,8 @@ const AddUser = () => {
 
   const validateForm = () => {
     let isValid = true;
-    const erMessage = [...erMessage]
+    const erMessage = {...erMessage}
+
     if (user.username === "") {
       erMessage.username = "Please enter your City.";
       isValid = false;

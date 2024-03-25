@@ -134,23 +134,36 @@ tr:nth-child(even) {
   background-color: #eeeeee;
 }
 
-.form-container {
-  padding: 12px;
-  width: 70%;
+h1 {
+  margin-bottom: 24px;
+  color: #282c34;
 }
 
-.input-group {
-  margin: 8px 0;
+.form-container {
+  /* padding: 12px; */
+  width: 70%;
+
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: center;
+  gap: 16px;
+  
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
   gap: 4px;
+
+  width: 100%;
 
 }
 
 .input-group > * {
   width: 100%;
+  color: #282c34;
   /* outline: 1px solid lightcoral; */
 }
 
@@ -161,6 +174,7 @@ tr:nth-child(even) {
 
 input{
   flex: 5;
+  font-family: inherit;
   border: 2px solid gray;
   border-radius: 4px;
   padding: 8px 16px;
@@ -174,7 +188,7 @@ input{
 
 .button-container {
   width: 100%;
-  text-align: left;
+  text-align: right;
 }
 
 button {

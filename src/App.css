@@ -48,7 +48,7 @@ body {
   font-size: 18px;
   font-family: "Roboto", sans-serif;
   font-size: 18px;
-  background-color: #f6fcff;
+  /* background-color: ; */
 }
 
 .parent {
@@ -88,7 +88,6 @@ body {
 
 .content {
   width: 100%;
-  background-color: #f6fcff;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -132,7 +131,7 @@ td, th {
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #eeeeee;
 }
 
 .form-container {
@@ -143,14 +142,15 @@ tr:nth-child(even) {
 .input-group {
   margin: 8px 0;
   display: flex;
-  /* flex-direction: column; */
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
   justify-content: center;
   gap: 4px;
 
 }
 
 .input-group > * {
+  width: 100%;
   /* outline: 1px solid lightcoral; */
 }
 
@@ -166,22 +166,37 @@ input{
   padding: 8px 16px;
 }
 
+.label-danger {
+  color: orangered;
+  text-align: left;
+  font-size: 16px;
+}
+
 .button-container {
   width: 100%;
-  text-align: right;
+  text-align: left;
 }
 
 button {
-  padding: 8px 16px;
+  padding: 8px 24px;
   margin: 8px 0;
   border: 1px solid transparent;
-  border-radius: 8px;
-  background-color: #0bafd8;
+  border-radius: 4px;
+  background-color: #4E4FEB;
   font-size: 16px;
   font-weight: 400;
   color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3939ec;
 }
 
 .delete {
   background-color: rgb(241, 34, 34);
+}
+
+.detail {
+  background-color: #000;
 }

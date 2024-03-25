@@ -7,7 +7,6 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import AddUser from "./pages/UserManagement/AddUser";
 import UserDetail from "./pages/UserManagement/UserDetail";
-
 function App() {
   return (
     <div className="App">
@@ -19,8 +18,8 @@ function App() {
             <Route path="/Home" element={ <Home />} />
             <Route path="/FAQ" element={< FAQ />} />
             <Route path="/Contact" element={ <Contact/> } />
-            <Route path="/userManagement/AddUser" element={ <AddUser/> } />
-            <Route path="/userManagement/UserDetail" element={ <UserDetail/> } />
+            <Route path="/UserManagement/AddUser" element={ <AddUser/> } />
+            <Route path="/UserManagement/UserDetail/:id" element={ <UserDetail/> } />
           </Route>
         </Routes>
       </BrowserRouter>

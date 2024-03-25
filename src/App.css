@@ -175,9 +175,14 @@ h1 {
 input{
   flex: 5;
   font-family: inherit;
-  border: 2px solid gray;
+  border: 1px solid gray;
   border-radius: 4px;
   padding: 8px 16px;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid #3939ec;
 }
 
 .label-danger {

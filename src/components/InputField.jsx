@@ -1,4 +1,4 @@
-const InputField = ({label, type, name, value, onChange, isSubmitted, error, ...props}) => {
+const InputField = ({label, type, name, placeholder, value, onChange, isSubmitted, error, ...props}) => {
   return (
     <>
       <div className="input-group">
@@ -8,10 +8,11 @@ const InputField = ({label, type, name, value, onChange, isSubmitted, error, ...
           name={name}
           value={value}
           onChange={onChange}
+          placeholder={placeholder}
           {...props}
           required
         />
-        {`${isSubmitted}` && `${value}` === "" && (
+        {isSubmitted && value === "" && (
           <span className="label-danger">{error}</span>
         )}
       </div>

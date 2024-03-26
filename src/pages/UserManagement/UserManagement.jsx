@@ -1,33 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Table } from "../../components/Table";
 
 const UserManagement = () => {
-  const student = {
-    name: "John Doe",
-    roll: 213,
-    phone: [12, 123, 123],
-  };
-
-  //object desctructuring
-  const { name, roll, phone } = student;
-
-  //Array desctructuring
-  const [n, q, e] = phone;
-
-  //spread operator
-  const uzers = [
-    {
-      id: 1,
-      name: "james",
-    },
-  ];
-
-  const uzer = {
-    id: 2,
-    name: "Ras",
-  };
-
-  const newUser = [...uzers, uzer];
 
   const [users, setUsers] = useState([]);
   useEffect(() => {
@@ -35,6 +10,25 @@ const UserManagement = () => {
       setUsers(data);
     }, 1000);
   }, []);
+
+  const header = [
+    {
+      key: "username",
+      name: "Username",
+    },
+    {
+      key: "email",
+      name: "Email",
+    },
+    {
+      key: "age",
+      name: "Age",
+    },
+    {
+      key: "city",
+      name: "City",
+    },
+  ];
 
   const data = [
     {
@@ -71,7 +65,7 @@ const UserManagement = () => {
         </Link>
       </div>
 
-      <table>
+      {/* <table>
         <thead>
           <tr>
             <th>Username</th>
@@ -121,7 +115,9 @@ const UserManagement = () => {
             </tr>
           )}
         </tbody>
-      </table>
+      </table> */}
+
+      <Table users={users} header={header} />
     </>
   );
 };

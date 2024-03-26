@@ -7,6 +7,8 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import AddUser from "./pages/UserManagement/AddUser";
 import UserDetail from "./pages/UserManagement/UserDetail";
+import Login from "./pages/Auth/Login";
+
 function App() {
   return (
     <div className="App">
@@ -21,6 +23,7 @@ function App() {
             <Route path="/UserManagement/AddUser" element={ <AddUser/> } />
             <Route path="/UserManagement/UserDetail/:id" element={ <UserDetail/> } />
           </Route>
+          <Route path="/Login" element={<Login/>} />
         </Routes>
       </BrowserRouter>
     </div>

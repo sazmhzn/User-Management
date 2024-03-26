@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import InputField from "../../components/InputField";
 import { Password } from "../../components/PasswordField";
 
-import {ValidEmail} from "../../utils/Common";
+import { ValidEmail } from "../../utils/Common";
 
 const AddUser = () => {
   const navigate = useNavigate();
@@ -31,52 +31,53 @@ const AddUser = () => {
   });
 
   const validateForm = () => {
-    console.log(erMessage);
     let isValid = true;
-    const errorMessage = {...erMessage}
+    const errorMessage = {...erMessage};
 
     if (user.username === "") {
       errorMessage.username = "Please enter your username.";
       console.log(errorMessage);
       isValid = false;
     } else {
-      errorMessage.username = '';
+      errorMessage.username = "";
     }
     if (user.password === "") {
       errorMessage.password = "Please enter your password.";
       console.log(errorMessage);
       isValid = false;
     } else {
-      errorMessage.password = '';
+      errorMessage.password = "";
     }
 
     if (user.email === "") {
       errorMessage.email = "Please enter your Email.";
       isValid = false;
-    } else if(!ValidEmail( user.email )) {
-      console.log("is not valid");
-      errorMessage.email = 'Please enter a valid eamil';
+    } else if (!ValidEmail(user.email)) {
+
+      errorMessage.email = "Please enter a valid eamil";
+      isValid = false;
+
     } else {
-      errorMessage.email = '';
+      errorMessage.email = "";
     }
-    
-    
 
     if (user.age === "") {
       errorMessage.age = "Please enter your age.";
       isValid = false;
     } else {
-      errorMessage.age = '';
+      errorMessage.age = "";
     }
-    
+
     if (user.city === "") {
       errorMessage.city = "Please enter your City.";
       isValid = false;
     } else {
-      errorMessage.city = '';
+      errorMessage.city = "";
     }
 
     setErMessager(errorMessage);
+    console.log(isValid);
+
     return isValid;
   };
 
@@ -88,12 +89,12 @@ const AddUser = () => {
   };
 
   const saveForm = () => {
+    console.log("error message", erMessage);
     setIsSubmitted(true);
 
     if (validateForm()) {
       navigate("/userManagement");
     }
-      
   };
 
   return (
@@ -119,7 +120,6 @@ const AddUser = () => {
 
         <InputField
           label="Email"
-          type="email"
           name="email"
           value={user.email}
           onChange={handleUserInput}
@@ -129,7 +129,6 @@ const AddUser = () => {
 
         <InputField
           label="Age"
-          type="text"
           name="age"
           value={user.age}
           onChange={handleUserInput}
@@ -139,7 +138,6 @@ const AddUser = () => {
 
         <InputField
           label="City"
-          type="text"
           name="city"
           value={user.city}
           onChange={handleUserInput}

@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import {data} from "../utils/data"
 
 export const Table = ({ users, header }) => {
   return (
+    <>
     <table>
       <thead>
         <tr>
           {header.length > 0 &&
             header.map((row, index) => {
-              return <th key="{index}">{row.name}</th>;
+              return <th key={index}>{row.name}</th>;
             })}
             <th colSpan={3}>Action</th>
         </tr>
@@ -54,5 +56,12 @@ export const Table = ({ users, header }) => {
         )}
       </tbody>
     </table>
+
+
+    <table>
+      h
+    </table>
+    </>
+    
   );
 };

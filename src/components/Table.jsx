@@ -1,67 +1,52 @@
-import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import {data} from "../utils/data"
-
-export const Table = ({ users, header }) => {
+const Table = (props) => {
   return (
-    <>
     <table>
       <thead>
         <tr>
-          {header.length > 0 &&
-            header.map((row, index) => {
-              return <th key={index}>{row.name}</th>;
+          {props.header.length > 0 &&
+            props.header.map((row, index) => {
+              return <th key={index}>{row.label}</th>;
             })}
-            <th colSpan={3}>Action</th>
+          {props.actions && props.actions.length > 0 && <th>Action</th>}
         </tr>
       </thead>
       <tbody>
-        {users.length > 0 && (
-          <>
-            {users.map((user, index) => {
-              return (
-                <tr key={index}>
-                  <td> {user.username} </td>
-                  <td> {user.email} </td>
-                  <td> {user.age} </td>
-                  <td> {user.city} </td>
-                  <td>
-                    <Link to={`/UserManagement/UserDetail/${user.id}`}>
-                      {" "}
-                      <button className="detail">Detail</button>{" "}
-                    </Link>
-                  </td>
-                  <td>
-                    <Link to={`/UserManagement/edit/${user.id}`}>
-                      {" "}
-                      <button>Edit</button>{" "}
-                    </Link>
-                  </td>
-                  <td>
-                    <Link to={`/UserManagement/delete/${user.id}`}>
-                      {" "}
-                      <button className="delete">Delete</button>{" "}
-                    </Link>
-                  </td>
-                </tr>
-              );
-            })}
-          </>
-        )}
+        {props.data.length > 0 &&
+          props.data.map((row, index) => {
+            return (
+              <tr key={index}>
+                {/* body starts */}
+                {props.header.map((header, index) => {
+                  return <td key={index}>{row[header.key]}</td>;
+                })}
+                {/* body ends */}
 
-        {users.length === 0 && (
+                {/* action starts */}
+                {props.actions && props.actions.length > 0 && (
+                  <td>
+                    {props.actions.map((action, index) => {
+                      return (
+                        <Link to={`${action.link}/${row.id}`} key={index}>
+                          {" "}
+                          <button className={action.className}>{action.name}</button>{" "}
+                        </Link>
+                      );
+                    })}
+                  </td>
+                )}
+                {/* action ends */}
+              </tr>
+            );
+          })}
+        {props.data.length === 0 && (
           <tr>
-            <td colSpan={5}>No record Found!</td>
+            <td colSpan={4}>No records found</td>
           </tr>
         )}
       </tbody>
     </table>
-
-
-    <table>
-      h
-    </table>
-    </>
-    
   );
 };
+
+export default Table;

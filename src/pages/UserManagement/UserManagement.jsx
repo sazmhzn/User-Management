@@ -1,8 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Table } from "../../components/Table";
+import Table from "../../components/Table";
 
 const UserManagement = () => {
+
+  const header = [
+    {
+      key: "username",
+      label: "Username",
+    },
+    {
+      key: "email",
+      label: "Email",
+    },
+    {
+      key: "age",
+      label: "Age",
+    },
+    {
+      key: "city",
+      label: "City",
+    }
+  ]
+  const data = [
+    {
+      id: 1,
+      username: 'John',
+      email: 'jon@gmailcom',
+      age: 25,
+      city: 'London'
+    },
+    {
+      id: 2,
+      username: 'Jane',
+      email: 'jane@gmailcom',
+      age: 22,
+      city: 'New York'
+    },
+    {
+      id: 3,
+      username: 'Paul',
+      email: 'paul@gmailcom',
+      age: 30,
+      city: 'Paris'
+    },
+    {
+      id: 4,
+      username: 'Paula',
+      email: 'paul@gmailcom',
+      age: 30,
+      city: 'Paris'
+    }
+  ];
 
   const [users, setUsers] = useState([]);
   useEffect(() => {
@@ -10,49 +59,6 @@ const UserManagement = () => {
       setUsers(data);
     }, 1000);
   }, []);
-
-  const header = [
-    {
-      key: "username",
-      name: "Username",
-    },
-    {
-      key: "email",
-      name: "Email",
-    },
-    {
-      key: "age",
-      name: "Age",
-    },
-    {
-      key: "city",
-      name: "City",
-    },
-  ];
-
-  const data = [
-    {
-      id: 1,
-      username: "Rames",
-      email: "ram@gamil.com",
-      age: 14,
-      city: "Lalitput",
-    },
-    {
-      id: 2,
-      username: "Paul",
-      email: "paul@gamil.com",
-      age: 30,
-      city: "Kathmandu",
-    },
-    {
-      id: 3,
-      username: "James",
-      email: "jame@gamil.com",
-      age: 30,
-      city: "Khopa",
-    },
-  ];
 
 
   return (
@@ -118,7 +124,27 @@ const UserManagement = () => {
         </tbody>
       </table> */}
 
-      <Table users={users} header={header} />
+      <Table 
+         data={users}
+         header={header}
+         actions={[
+           {
+             name: "Detail",
+             link: "/UserManagement/UserDetail",
+             className: "btn btn-default"
+           },
+           {
+             name: "Edit",
+             link: "/user-management/edit",
+             className: "btn"
+           },
+           {
+             name: "Delete",
+             link: "/UserManagement/UserDelete",
+             className: "delete"
+           }
+         ]}
+      />
     </>
   );
 };

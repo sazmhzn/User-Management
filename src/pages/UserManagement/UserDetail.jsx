@@ -6,28 +6,35 @@ const UserDetail = () => {
     const {id} = useParams();
 
     const data = [
-        {
-          id:1,
-          username: "Rames",
-          email: "ram@gamil.com",
-          age: 14,
-          city: "Lalitput",
-        },
-        {
-          id:2,
-          username: "Paul",
-          email: "paul@gamil.com",
-          age: 30,
-          city: "Kathmandu",
-        },
-        {
-          id:3,
-          username: "James",
-          email: "jame@gamil.com",
-          age: 30,
-          city: "Khopa",
-        },
-      ];
+      {
+        id: 1,
+        username: 'John',
+        email: 'jon@gmailcom',
+        age: 25,
+        city: 'London'
+      },
+      {
+        id: 2,
+        username: 'Jane',
+        email: 'jane@gmailcom',
+        age: 22,
+        city: 'New York'
+      },
+      {
+        id: 3,
+        username: 'Paul',
+        email: 'paul@gmailcom',
+        age: 30,
+        city: 'Paris'
+      },
+      {
+        id: 4,
+        username: 'Paula',
+        email: 'paul@gmailcom',
+        age: 30,
+        city: 'Paris'
+      }
+    ];
 
       const [user, setUser] = useState({
         username: "",

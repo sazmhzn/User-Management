@@ -22,6 +22,7 @@ const UserManagement = () => {
       label: "City",
     }
   ]
+  
   const data = [
     {
       id: 1,

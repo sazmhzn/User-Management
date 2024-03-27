@@ -22,4 +22,6 @@ export const InputField = ({label, type, name, placeholder, value, onChange, isS
 
 
 
+
+
 export default InputField;

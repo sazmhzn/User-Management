@@ -1,6 +1,6 @@
 
 
-export const Password = ({label, type, name, placeholder, value, onChange, isSubmitted, error, ...props}) => {
+const PasswordField = ({label, type, name, placeholder, value, onChange, isSubmitted, error, ...props}) => {
   return (
     <>
       <div className="input-group">
@@ -21,3 +21,5 @@ export const Password = ({label, type, name, placeholder, value, onChange, isSub
     </>
   );
 };
+
+export default PasswordField;

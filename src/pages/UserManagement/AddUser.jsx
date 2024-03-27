@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import InputField from "../../components/InputField";
-import { Password } from "../../components/PasswordField";
+import PasswordField from "../../components/PasswordField";
 
 import { ValidEmail } from "../../utils/Common";
 
@@ -109,7 +109,7 @@ const AddUser = () => {
           isSubmitted={isSubmitted}
           error={erMessage.username}
         />
-        <Password
+        <PasswordField
           label="Password"
           name="password"
           value={user.password}

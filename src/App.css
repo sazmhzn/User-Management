@@ -230,6 +230,18 @@ button:hover {
   align-items: center;
 }
 
-.login-container > * {
+/* .login-container > * {
 
+} */
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.errorMessage {
+  background-color: orangered;
+  padding: 8px;
+  color: white;
 }

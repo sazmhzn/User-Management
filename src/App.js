@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import AddUser from "./pages/UserManagement/AddUser";
 import UserDetail from "./pages/UserManagement/UserDetail";
 import Login from "./pages/Auth/Login";
+import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {
   return (
@@ -16,11 +17,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
           {/* <Route path="/Home" element={<Home />}> */}
-            <Route path="/UserManagement" element={ < UserManagement />} />
+            <Route path="/UserManagement" element={ <PrivateRoute component={UserManagement} />} />
             <Route path="/Home" element={ <Home />} />
             <Route path="/FAQ" element={< FAQ />} />
             <Route path="/Contact" element={ <Contact/> } />
-            <Route path="/UserManagement/AddUser" element={ <AddUser/> } />
+            <Route path="/UserManagement/AddUser" element={  <PrivateRoute component={AddUser}/> } />
             <Route path="/UserManagement/UserDetail/:id" element={ <UserDetail/> } />
           </Route>
           <Route path="/Login" element={<Login/>} />

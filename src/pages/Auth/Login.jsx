@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigate } from "react-router-dom";
 
 import InputField from "../../components/InputField";
@@ -9,6 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('')
 
   const handleInputChange = (event) => {
     if(event.target.name === 'email') {
@@ -18,6 +19,8 @@ const Login = () => {
       setPassword(event.target.value);
     }
   }
+
+
   const doLogin = (e) => {
     let isLogin = false;
     if(email === "admin" && password === "admin") {
@@ -26,28 +29,39 @@ const Login = () => {
     console.log(email, password);
 
     if(isLogin) {
+      localStorage.setItem('isLogin', '1')
       navigate('/UserManagement');
     } else {
-      alert('Login failed');
+      // alert('Login failed');
+      setError( (prev) => prev = "Login Failed" )
     }
   }
+
+  useEffect(() => {
+    const isLogin = localStorage.getItem('isLogin');
+    if(isLogin === '1') {
+      navigate('/UserManagement');
+    }
+  })
 
   return (
     <div className="main">
       <div className="login-container">
       <h1>Login</h1>
-      <h3>Enter your login credentials</h3>
+      
+      {error && <span className='errorMessage'> {error} </span> }
+      <h3 style={{margin:"10px 0"}}>Enter your login credentials</h3>
       <form className="form-container" action="">
         <InputField label="Email" name="email" onChange={handleInputChange} />
         <Password label="Password" name="password" onChange={handleInputChange} />
 
-        <button type="submit" onClick={doLogin}>Submit</button>
+        <button type="button" onClick={doLogin}>Submit</button>
       </form>
       <p>
         Not registered?
-        <a href="#" style={{ textDecoration: "none", marginLeft: "4px" }}>
+        <span style={{ textDecoration: "none", marginLeft: "4px" }}>
           Create an account
-        </a>
+        </span>
       </p>
     </div>
     </div>

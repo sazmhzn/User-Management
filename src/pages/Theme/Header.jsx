@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Logo from "../../asssets/logo.png"
 
 
 const Header = () => {
@@ -13,8 +14,9 @@ const Header = () => {
     return(
         <>
         <header className="child flex">
-            <div className="logo">Virinchi College</div>
-            <button className="delete" onClick={logout}>Login</button>
+            <div className="logo"><img src={Logo} alt="" width={'50px'} /></div>
+            
+            <button className="delete" onClick={logout}>Logout</button>
 
         </header>
         </>

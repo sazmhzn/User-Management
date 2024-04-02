@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import AddUser from "./pages/UserManagement/AddUser";
 import UserDetail from "./pages/UserManagement/UserDetail";
 import Login from "./pages/Auth/Login";
+import UserDelete from "./pages/UserManagement/UserDelete";
 import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/FAQ" element={< FAQ />} />
             <Route path="/Contact" element={ <Contact/> } />
             <Route path="/UserManagement/AddUser" element={  <PrivateRoute component={AddUser}/> } />
+            <Route path="/UserManagement/UserDelete/:id" element={  <PrivateRoute component={UserDelete}/> } />
             <Route path="/UserManagement/UserDetail/:id" element={ <UserDetail/> } />
           </Route>
           <Route path="/Login" element={<Login/>} />

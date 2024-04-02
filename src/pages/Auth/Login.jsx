@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import InputField from "../../components/InputField";
 import Password from "../../components/PasswordField";
+import Message from '../../components/Message';
 
 const Login = () => {
 
@@ -33,7 +34,7 @@ const Login = () => {
       navigate('/UserManagement');
     } else {
       // alert('Login failed');
-      setError( (prev) => prev = "Login Failed" )
+      setError( (prev) => prev = "Invalid username and password" )
     }
   }
 
@@ -49,7 +50,7 @@ const Login = () => {
       <div className="login-container">
       <h1>Login</h1>
       
-      {error && <span className='errorMessage'> {error} </span> }
+      {error && <Message message={error}/> }
       <h3 style={{margin:"10px 0"}}>Enter your login credentials</h3>
       <form className="form-container" action="">
         <InputField label="Email" name="email" onChange={handleInputChange} />

@@ -152,6 +152,10 @@ h1 {
   
 }
 
+.form-container > * {
+  flex: 1;
+}
+
 .input-group {
   display: flex;
   flex-direction: column;
@@ -204,8 +208,8 @@ button {
   border: 1px solid transparent;
   border-radius: 4px;
   background-color: #4E4FEB;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 450;
   color: white;
   cursor: pointer;
 }
@@ -231,7 +235,7 @@ button:hover {
 }
 
 /* .login-container > * {
-
+  flex: 1;
 } */
 
 .flex {
@@ -241,7 +245,18 @@ button:hover {
 }
 
 .errorMessage {
-  background-color: orangered;
-  padding: 8px;
-  color: white;
+  width: 70%;
+  border: 2px solid red;
+  background-color: #ff33334f;
+  padding: 16px 16px;
+  color: red;
+  text-align: left;
+  border-radius: 4px;
 }
+
+.button-group > *{
+  margin-right: 8px;
+}
+
+
+/* header css */

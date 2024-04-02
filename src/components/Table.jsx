@@ -28,8 +28,9 @@ const Table = (props) => {
                     {props.actions.map((action, index) => {
                       return (
                         <Link to={`${action.link}/${row.id}`} key={index}>
-                          {" "}
-                          <button className={action.className}>{action.name}</button>{" "}
+                          <button className={action.className}>
+                            {action.name}
+                          </button>
                         </Link>
                       );
                     })}

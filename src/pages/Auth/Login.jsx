@@ -32,18 +32,6 @@ const Login = () => {
     console.log(email, password);
 
     if(isLogin) {
-      
-      localStorage.setItem('isLogin', '1')
-      navigate('/UserManagement');
-    } else {
-      // alert('Login failed');
-      setError( (prev) => prev = "Invalid username and password" )
-    }
-  }
-
-  useEffect(() => {
-    const isLogin = localStorage.getItem('isLogin');
-    if(isLogin === '1') {
       toast.success(
         'Logged in successfully', {
           position: "top-right",
@@ -56,6 +44,18 @@ const Login = () => {
           theme: "light",
         }
       );
+      localStorage.setItem('isLogin', '1')
+      navigate('/UserManagement');
+    } else {
+      // alert('Login failed');
+      setError( (prev) => prev = "Invalid username and password" )
+    }
+  }
+
+  useEffect(() => {
+    const isLogin = localStorage.getItem('isLogin');
+    if(isLogin === '1') {
+      
       navigate('/UserManagement');
     }
   })

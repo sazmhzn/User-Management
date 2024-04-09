@@ -27,7 +27,7 @@ const UserDelete = () => {
         alert(err);
         console.log(err);
       });
-  }, []);
+  });
 
   const deleteUser = () => {
     const confirm = window.confirm(

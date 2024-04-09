@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Layout from "./pages/Theme/Layout";
 import Faq from "./pages/FAQ";
@@ -14,7 +14,6 @@ import UserDelete from "./pages/UserManagement/UserDelete";
 import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {
-  const notify = () => toast("Wow so easy!");
 
   return (
     <div className="App">

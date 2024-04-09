@@ -3,16 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 import InputField from "../../components/InputField";
 import PasswordField from "../../components/PasswordField";
-
 import { ValidEmail } from "../../utils/Common";
+import { v4 as uuidv4 } from 'uuid';
+import axios, { Axios } from "axios";
+
 
 const AddUser = () => {
   const navigate = useNavigate();
 
-  // const [username, setUsername] = useState();
-  // const [email, setEmail] = useState();
-  // const [age, setAge] = useState();
-  // const [city, setCity] = useState();
 
   const [user, setUser] = useState({
     username: "",
@@ -89,11 +87,21 @@ const AddUser = () => {
   };
 
   const saveForm = () => {
-    console.log("error message", erMessage);
-    setIsSubmitted(true);
+    const uuid = uuidv4();
 
     if (validateForm()) {
-      navigate("/userManagement");
+      const item = {...user, id: uuid}
+      console.log("users", item);
+      
+      axios.post('http://localhost:4005/users', item)
+      .then(() => {
+        console.log("uer saved");
+        navigate("/userManagement");
+      })
+      .catch((err) => {
+        alert(err)
+      })
+      // navigate("/userManagement");
     }
   };
 

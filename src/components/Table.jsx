@@ -42,7 +42,7 @@ const Table = (props) => {
           })}
         {props.data.length === 0 && (
           <tr>
-            <td colSpan={4}>No records found</td>
+            <td colSpan={5}>No records found</td>
           </tr>
         )}
       </tbody>

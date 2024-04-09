@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import axios, { Axios } from "axios";
+
 
 const UserDelete = () => {
   const navigate = useNavigate();
@@ -45,11 +47,25 @@ const UserDelete = () => {
   });
 
   useEffect(() => {
-    const newUser = data.find((obj) => obj.id.toString() === id.toString());
-    if (newUser) {
-      setUser(newUser);
-    }
+    axios.get(`http://localhost:4005/users/${id}`)
+    .then((res) => {
+      console.log(res.data)
+      setUser(res.data)
+    }).catch((err) => {
+      alert(err)
+      console.log(err);
+    })
   }, []);
+
+  const deleteUser = () => {
+    axios.delete(`http://localhost:4005/users/${id}`)
+    .then((res) => {
+      navigate('/userManagement')
+    }).catch((err) => {
+      alert(err)
+      console.log(err);
+    })
+  }
 
   return (
     <>
@@ -71,10 +87,7 @@ const UserDelete = () => {
 
         <button
           type="button"
-          onClick={() => {
-            navigate("/userManagement");
-          }}
-        >
+          onClick={deleteUser}>
           Yes
         </button>
       </div>

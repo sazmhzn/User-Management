@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Table from "../../components/Table";
+import axios, { Axios } from "axios";
 
 const UserManagement = () => {
 
@@ -23,45 +24,32 @@ const UserManagement = () => {
     }
   ]
   
-  const data = [
-    {
-      id: 1,
-      username: 'John',
-      email: 'jon@gmailcom',
-      age: 25,
-      city: 'London'
-    },
-    {
-      id: 2,
-      username: 'Jane',
-      email: 'jane@gmailcom',
-      age: 22,
-      city: 'New York'
-    },
-    {
-      id: 3,
-      username: 'Paul',
-      email: 'paul@gmailcom',
-      age: 30,
-      city: 'Paris'
-    },
-    {
-      id: 4,
-      username: 'Paula',
-      email: 'paul@gmailcom',
-      age: 30,
-      city: 'Paris'
-    }
-  ];
 
   const [users, setUsers] = useState([]);
+ 
+ 
   useEffect(() => {
-    setTimeout(() => {
-      setUsers(data);
-    }, 1000);
+    axios.get("http://localhost:4005/users")
+    .then((res) => {
+      console.log(res.data)
+      // const result = [];
+      // for (let data of res.data){
+      //   result.push({
+      //     username : data.id,
+      //     email: data?.name?.english,
+      //     age: data?.base?.HP,
+      //     city:data?.type
+
+      //   })
+      // }
+      setUsers(res.data)
+    }).catch((err) => {
+      alert(err)
+      console.log(err);
+    })
   }, []);
 
-
+// console.log(users);
   return (
     <>
       <h1>User management</h1>
@@ -132,17 +120,17 @@ const UserManagement = () => {
            {
              name: "Detail",
              link: "/UserManagement/UserDetail",
-             className: "btn btn-default"
+             className: "btn action  btn-default"
            },
            {
              name: "Edit",
              link: "/user-management/edit",
-             className: "btn"
+             className: "btn action "
            },
            {
              name: "Delete",
              link: "/UserManagement/UserDelete",
-             className: "delete"
+             className: " action delete"
            }
          ]}
       />

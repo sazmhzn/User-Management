@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Layout from "./pages/Theme/Layout";
-import FAQ from "./pages/FAQ";
+import Faq from "./pages/FAQ";
 import UserManagement from "./pages/UserManagement/UserManagement"
 import "./App.css";
 import Contact from "./pages/Contact";
@@ -12,6 +14,8 @@ import UserDelete from "./pages/UserManagement/UserDelete";
 import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {
+  const notify = () => toast("Wow so easy!");
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -20,7 +24,7 @@ function App() {
           {/* <Route path="/Home" element={<Home />}> */}
             <Route path="/UserManagement" element={ <PrivateRoute component={UserManagement} />} />
             <Route path="/Home" element={ <Home />} />
-            <Route path="/FAQ" element={< FAQ />} />
+            <Route path="/FAQ" element={< Faq />} />
             <Route path="/Contact" element={ <Contact/> } />
             <Route path="/UserManagement/AddUser" element={  <PrivateRoute component={AddUser}/> } />
             <Route path="/UserManagement/UserDelete/:id" element={  <PrivateRoute component={UserDelete}/> } />
@@ -29,6 +33,7 @@ function App() {
           <Route path="/Login" element={<Login/>} />
         </Routes>
       </BrowserRouter>
+        <ToastContainer />
     </div>
   );
 }

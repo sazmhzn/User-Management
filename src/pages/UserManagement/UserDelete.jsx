@@ -1,43 +1,13 @@
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios, { Axios } from "axios";
-
+import axios from "axios";
 
 const UserDelete = () => {
   const navigate = useNavigate();
 
   const { id } = useParams();
-
-  const data = [
-    {
-      id: 1,
-      username: "John",
-      email: "jon@gmailcom",
-      age: 25,
-      city: "London",
-    },
-    {
-      id: 2,
-      username: "Jane",
-      email: "jane@gmailcom",
-      age: 22,
-      city: "New York",
-    },
-    {
-      id: 3,
-      username: "Paul",
-      email: "paul@gmailcom",
-      age: 30,
-      city: "Paris",
-    },
-    {
-      id: 4,
-      username: "Paula",
-      email: "paul@gmailcom",
-      age: 30,
-      city: "Paris",
-    },
-  ];
 
   const [user, setUser] = useState({
     username: "",
@@ -47,25 +17,44 @@ const UserDelete = () => {
   });
 
   useEffect(() => {
-    axios.get(`http://localhost:4005/users/${id}`)
-    .then((res) => {
-      console.log(res.data)
-      setUser(res.data)
-    }).catch((err) => {
-      alert(err)
-      console.log(err);
-    })
+    axios
+      .get(`http://localhost:4005/users/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        setUser(res.data);
+      })
+      .catch((err) => {
+        alert(err);
+        console.log(err);
+      });
   }, []);
 
   const deleteUser = () => {
-    axios.delete(`http://localhost:4005/users/${id}`)
-    .then((res) => {
-      navigate('/userManagement')
-    }).catch((err) => {
-      alert(err)
-      console.log(err);
-    })
-  }
+    const confirm = window.confirm(
+      "Are you sure you want to delete this user?"
+    );
+    if (confirm) {
+      axios
+        .delete(`http://localhost:4005/users/${id}`)
+        .then((res) => {
+          toast.error("😔 User deleted succesfully", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+          navigate("/userManagement");
+        })
+        .catch((err) => {
+          alert(err);
+          console.log(err);
+        });
+    }
+  };
 
   return (
     <>
@@ -85,12 +74,11 @@ const UserDelete = () => {
           No
         </button>
 
-        <button
-          type="button"
-          onClick={deleteUser}>
+        <button type="button" onClick={deleteUser}>
           Yes
         </button>
       </div>
+      {/* <ToastContainer /> */}
     </>
   );
 };

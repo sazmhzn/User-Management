@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React, {useEffect, useState} from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -30,6 +32,7 @@ const Login = () => {
     console.log(email, password);
 
     if(isLogin) {
+      
       localStorage.setItem('isLogin', '1')
       navigate('/UserManagement');
     } else {
@@ -41,6 +44,18 @@ const Login = () => {
   useEffect(() => {
     const isLogin = localStorage.getItem('isLogin');
     if(isLogin === '1') {
+      toast.success(
+        'Logged in successfully', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
       navigate('/UserManagement');
     }
   })

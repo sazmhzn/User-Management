@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../asssets/logo.png"
 
@@ -5,7 +7,20 @@ import Logo from "../../asssets/logo.png"
 const Header = () => {
 
     const navigate = useNavigate();
+    
     const logout = () => {
+        toast.success(
+            'Logged out successfully', {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            }
+          );
       localStorage.removeItem('isLogin')  
       navigate('/Login')
     }

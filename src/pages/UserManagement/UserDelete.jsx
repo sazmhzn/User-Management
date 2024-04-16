@@ -1,8 +1,9 @@
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { showDanger } from "../../utils/notification";
+import { deleteUser, getUsersByID } from "../../service/userManagementService";
+
 
 const UserDelete = () => {
   const navigate = useNavigate();
@@ -17,8 +18,7 @@ const UserDelete = () => {
   });
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:4005/users/${id}`)
+    getUsersByID(id)
       .then((res) => {
         console.log(res.data);
         setUser(res.data);
@@ -29,30 +29,20 @@ const UserDelete = () => {
       });
   });
 
-  const deleteUser = () => {
+  const handleDeleteUser = () => {
     const confirm = window.confirm(
       "Are you sure you want to delete this user?"
     );
     if (confirm) {
-      axios
-        .delete(`http://localhost:4005/users/${id}`)
-        .then((res) => {
-          toast.error("😔 User deleted succesfully", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-          navigate("/userManagement");
-        })
-        .catch((err) => {
-          alert(err);
-          console.log(err);
-        });
+      deleteUser(id)
+      .then((res) => {
+        showDanger("User deleted successfully")
+        navigate("/userManagement");
+      })
+      .catch((err) => {
+        alert(err);
+        console.log(err);
+      });
     }
   };
 
@@ -74,7 +64,7 @@ const UserDelete = () => {
           No
         </button>
 
-        <button type="button" onClick={deleteUser}>
+        <button type="button" onClick={handleDeleteUser}>
           Yes
         </button>
       </div>

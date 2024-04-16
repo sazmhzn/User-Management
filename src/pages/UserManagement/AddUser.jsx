@@ -1,15 +1,18 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import InputField from "../../components/InputField";
 import PasswordField from "../../components/PasswordField";
 import { ValidEmail } from "../../utils/Common";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
+import { showSuccess } from "../../utils/notification";
+import { getUsersByID, updateUser } from "../../service/userManagementService";
 
 const AddUser = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
@@ -19,6 +22,21 @@ const AddUser = () => {
     age: "",
     city: "",
   });
+
+  useEffect(() => {
+    if (id){
+      getUsersByID(id)
+      .then((res) => {
+        setUser(res);
+      })
+      .catch((err) => {
+        alert(err);
+        console.log(err);
+      });
+    }
+  }, [id]);
+
+  
 
   const [erMessage, setErMessager] = useState({
     username: "",
@@ -80,56 +98,51 @@ const AddUser = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleUserInput = (e) => {
-    // setUsername(e.target.value);
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-
-
   const saveForm = () => {
-    const uuid = uuidv4();
-
     if (validateForm()) {
-      const item = { ...user, id: uuid };
-      console.log("users", item);
-
-      axios
-        .post("http://localhost:4005/users", item)
+      if (id) {
+        //update case
+        console.log('Updating the user: ', user);
+        updateUser(id, user)
         .then(() => {
-          toast.success(
-            '🦄 Wow so easy!', {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            }
-          );
-          setIsSubmitted(true)
+          showSuccess("User updated");
+          setIsSubmitted(true);
           navigate("/userManagement");
         })
         .catch((err) => {
-          // toast.error("He");
           alert(err);
         });
-      // navigate("/userManagement");
-    } else {
-      toast.error(
-        '🦄 Wow it did not save', {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        }
-      )
 
+      } else {
+        //Add case
+        const uuid = uuidv4();
+        const item = { ...user, id: uuid };
+        axios
+          .post("http://localhost:4005/users", item)
+          .then(() => {
+            showSuccess("User Added successfully");
+            setIsSubmitted(true);
+            navigate("/userManagement");
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      }
+
+    } else {
+      toast.error("🦄 Wow it did not save", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 
@@ -137,7 +150,7 @@ const AddUser = () => {
 
   return (
     <>
-      <h1>Add user</h1>
+      <h1>{id ? 'Edit User' : 'Add user'}</h1>
       <div className="form-container">
         <InputField
           label="Username"
@@ -183,10 +196,9 @@ const AddUser = () => {
           error={erMessage.city}
         />
         <div>
-          <button onClick={saveForm}>Save</button>
+          <button onClick={saveForm}>{id ? 'Update' : 'Save'}</button>
         </div>
       </div>
-
     </>
   );
 };

@@ -124,7 +124,7 @@ const UserManagement = () => {
            },
            {
              name: "Edit",
-             link: "/user-management/edit",
+             link: "/UserManagement/EditUser",
              className: "btn action "
            },
            {

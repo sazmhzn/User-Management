@@ -12,6 +12,7 @@ import UserDetail from "./pages/UserManagement/UserDetail";
 import Login from "./pages/Auth/Login";
 import UserDelete from "./pages/UserManagement/UserDelete";
 import PrivateRoute from "./routes/PrivateRoute";
+import EditUser from "./pages/UserManagement/EditUser";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/FAQ" element={< Faq />} />
             <Route path="/Contact" element={ <Contact/> } />
             <Route path="/UserManagement/AddUser" element={  <PrivateRoute component={AddUser}/> } />
+            <Route path="/UserManagement/EditUser/:id" element={  <PrivateRoute component={EditUser}/> } />
             <Route path="/UserManagement/UserDelete/:id" element={  <PrivateRoute component={UserDelete}/> } />
             <Route path="/UserManagement/UserDetail/:id" element={ <UserDetail/> } />
           </Route>

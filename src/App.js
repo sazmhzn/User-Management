@@ -9,7 +9,7 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import AddUser from "./pages/UserManagement/AddUser";
 import UserDetail from "./pages/UserManagement/UserDetail";
-import Login from "./pages/Auth/Login.1";
+import Login from "./pages/Auth/Login";
 import UserDelete from "./pages/UserManagement/UserDelete";
 import PrivateRoute from "./routes/PrivateRoute";
 

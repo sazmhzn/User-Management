@@ -108,7 +108,7 @@ const AddUser = () => {
         console.log('Updating the user: ', user);
         updateUser(id, user)
         .then(() => {
-          showSuccess("User updated");
+          showSuccess('User updated');
           setIsSubmitted(true);
           navigate("/userManagement");
         })

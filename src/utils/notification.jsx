@@ -17,6 +17,7 @@ export const showSuccess = (message) => {
     )
   )
 }
+
 export const showDanger = (message) => {
   return (
     toast.error(message, {

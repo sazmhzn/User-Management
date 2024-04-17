@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Table from "../../components/Table";
-import axios from "axios";
+import InputField from "../../components/InputField";
+import { getAllUsers, searchByUsername } from "../../service/userManagementService";
 
 const UserManagement = () => {
 
@@ -26,30 +27,25 @@ const UserManagement = () => {
   
 
   const [users, setUsers] = useState([]);
- 
- 
+  const [searchUsername, setSearchUsername] = useState('');
   useEffect(() => {
-    axios.get("http://localhost:4005/users")
-    .then((res) => {
-      console.log(res.data)
-      // const result = [];
-      // for (let data of res.data){
-      //   result.push({
-      //     username : data.id,
-      //     email: data?.name?.english,
-      //     age: data?.base?.HP,
-      //     city:data?.type
-
-      //   })
-      // }
-      setUsers(res.data)
+    getAllUsers().then((data) => {
+      setUsers(data);
     }).catch((err) => {
-      alert(err)
+      alert("API server error");
       console.log(err);
-    })
+    });
   }, []);
+  const handleSearchUsername = (e) => {
+    setSearchUsername(e.target.value);
+    searchByUsername(e.target.value).then((data) => {
+      setUsers(data);
+    }).catch((err) => {
+      alert("API server error");
+      console.log(err);
+    });
+  }
 
-// console.log(users);
   return (
     <>
       <h1>User management</h1>
@@ -61,57 +57,17 @@ const UserManagement = () => {
         </Link>
       </div>
 
-      {/* <table>
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Age</th>
-            <th>City</th>
-            <th colSpan={3}>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.length > 0 && (
-            <>
-              {users.map((user, index) => {
-                return (
-                  <tr key={index}>
-                    <td> {user.username} </td>
-                    <td> {user.age} </td>
-                    <td> {user.age} </td>
-                    <td> {user.city} </td>
-                    <td>
-                      <Link to={`/UserManagement/UserDetail/${user.id}`}>
-                        {" "}
-                        <button className="detail">Detail</button>{" "}
-                      </Link>
-                    </td>
-                    <td>
-                      <Link to={`/UserManagement/edit/${user.id}`}>
-                        {" "}
-                        <button>Edit</button>{" "}
-                      </Link>
-                    </td>
-                    <td>
-                      <Link to={`/UserManagement/delete/${user.id}`}>
-                        {" "}
-                        <button className="delete">Delete</button>{" "}
-                      </Link>
-                    </td>
-                  </tr>
-                );
-              })}
-            </>
-          )}
-
-          {users.length === 0 && (
-            <tr>
-              <td colSpan={5}>No record Found!</td>
-            </tr>
-          )}
-        </tbody>
-      </table> */}
+      <div className="vi-flex-container">
+        <div >
+          <InputField 
+          name="username"
+          placeholder={`Search by Username...`}
+          value={searchUsername}
+          onChange={handleSearchUsername}
+          />
+        </div>
+        
+      </div>
 
       <Table 
          data={users}

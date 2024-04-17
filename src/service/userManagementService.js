@@ -7,7 +7,7 @@ export const getAllUsers = () => {
     axios.get(BASE_URL).then((response) => {
       resolve(response.data);
     }).catch((error) => {
-      reject("Error while fetching users");
+      reject(error);
     });
   });
 };
@@ -17,7 +17,7 @@ export const getUsersByID = (id) => {
     axios.get(`${BASE_URL}/${id}`).then((response) => {
       resolve(response.data);
     }).catch((error) => {
-      reject("Error while fetching a user");
+      reject(error);
     });
   });
 };
@@ -48,3 +48,13 @@ export const updateUser = (id, user) => {
   });
 };
 
+export const searchByUsername = (username) => {
+  return new Promise((resolve, reject) => {
+    axios.get(`${BASE_URL}?username=${username}`)
+        .then((res) => {
+          resolve(res.data);
+        }).catch((err) => {
+          reject(err);
+        })
+  });
+}

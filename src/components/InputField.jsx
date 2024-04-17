@@ -1,7 +1,6 @@
 export const InputField = ({label, type, name, placeholder, value, onChange, isSubmitted, error, ...props}) => {
   return (
-    <>
-      <div className="input-group">
+    <div className="input-group">
         <label>{label}</label>
         <input
           type="text"
@@ -16,7 +15,6 @@ export const InputField = ({label, type, name, placeholder, value, onChange, isS
           <span className="label-danger">{error}</span>
         )}
       </div>
-    </>
   );
 };
 
